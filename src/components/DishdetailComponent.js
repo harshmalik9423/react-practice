@@ -48,6 +48,8 @@ class DishDetail extends Component {
     }
 
     render() {
+        console.log("DishDetailComponent render Called");
+
         const { dish } = this.props;
         const { comments } = dish;
 
