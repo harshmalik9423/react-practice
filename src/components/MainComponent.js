@@ -25,7 +25,7 @@ class Main extends Component {
     renderDish(dishId) {
         if (dishId != null) {
           return <DishDetail 
-            dish={this.state.dishes.filter((dish) => dishId === this.state.selectedDish)[0]} />;
+            dish={this.state.dishes.filter((dish) => (dish.id === this.state.selectedDish))[0]}/>;
         } else {
           return <div></div>;
         }

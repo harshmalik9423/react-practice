@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
 class DishDetail extends Component {
 
+    componentDidMount() {
+        console.log("DishDetailComponent componentDidMount Called");
+    }
+
+    componentDidUpdate() {
+        console.log("DishDetailComponent updated");
+    }
+
     renderDish(dish) {
         if (dish !== null) {
             return (
