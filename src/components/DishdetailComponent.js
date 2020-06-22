@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
 class DishDetail extends Component {
-    changeDateFormat(date) {
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
-        const elements = date.split("-");
-        return `${months[parseInt(elements[1]) - 1]} ${elements[2]}, ${elements[0]}`;
-    }
+
     renderDish(dish) {
         if (dish !== null) {
             return (
@@ -29,9 +25,9 @@ class DishDetail extends Component {
                     <ul className="list-unstyled">
                         {comments.map((comment) => {
                             return (
-                                <div>
+                                <div className="container">
                                     <li>{comment.comment}</li>
-                                    <li>{`-- ${comment.author} , ${this.changeDateFormat(  comment.date.split("T")[0] )}`}</li>
+                                    <li>-- {comment.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</li>
                                 </div>
                             );
                         })}
@@ -48,10 +44,12 @@ class DishDetail extends Component {
         const { comments } = dish;
 
         return (
-            <div className="row">
-                <div className="col-12 col-md-5 m-1">{this.renderDish(dish)}</div>
-                <div className="col-12 col-md-5 m-1">
-                    {this.renderComment(comments)}
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 col-md-5 m-1">{this.renderDish(dish)}</div>
+                    <div className="col-12 col-md-5 m-1">
+                        {this.renderComment(comments)}
+                    </div>
                 </div>
             </div>
         );
